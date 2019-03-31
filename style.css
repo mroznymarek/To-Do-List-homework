@@ -1,0 +1,8 @@
+.to-do-list-container{
+    height: 100vh;
+    margin: 10 auto;
+    padding: 30px 30px;
+    text-align: center;
+    background-color: wheat;
+    align-content: center;
+}

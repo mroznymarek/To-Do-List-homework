@@ -1,7 +1,7 @@
 class ToDoList {
     constructor(selector) {
         this.container = document.querySelector(selector) || document.body;
-        this.tasks = []
+        this.tasks = JSON.parse(localStorage.getItem('to-do-list')) || []
         this.render();
     }
 
@@ -12,11 +12,17 @@ class ToDoList {
         }
         this.tasks = this.tasks.concat(task)
         this.render()
+        this.saveTask()
+    }
+    
+    saveTask(){
+        localStorage.cdsetItem('to-do-list', JSON.stringify(this.tasks))
     }
 
     removeTask(index) {
         this.tasks.splice(index, 1)
         this.render()
+        this.saveTask()
     }
 
     toggleTask(element) {
@@ -26,6 +32,7 @@ class ToDoList {
             element.isTaskCompleted = false
             }
             this.render()
+            this.saveTask()
     }
 
     render() {
